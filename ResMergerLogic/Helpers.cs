@@ -62,7 +62,7 @@ namespace ResMerger
         /// <typeparam name="T">Exception</typeparam>
         /// <param name="message">Exception message</param>
         /// <param name="exitCode">int</param>
-        internal static void ThrowException<T>(string message) where T : Exception, new()
+        public static void ThrowException<T>(string message) where T : Exception, new()
         {
             Helpers.WriteToLog("ResMerger.log", message);
 

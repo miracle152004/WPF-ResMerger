@@ -105,6 +105,23 @@ namespace ResMerger
             if (!relativeOutputFilePath.EndsWith(".xaml", StringComparison.InvariantCultureIgnoreCase))
                 Helpers.ThrowException<Exception>(OUTPUT_TYPE_EXCEPTION);
 
+            // create output doc
+            XDocument outputDoc = CreateOutputDocument(projectPath, projectName, relativeSourceFilePath);
+
+            using (var ms = new MemoryStream())
+            {
+                outputDoc.Save(ms);
+
+                if (OutputEqualsExistingFileContent(Path.Combine(projectPath, relativeOutputFilePath), ms.ToArray()))
+                    return;
+            }
+
+            // save file
+            outputDoc.Save(projectPath + relativeOutputFilePath);
+        }
+
+        public static XDocument CreateOutputDocument(string projectPath, string projectName, string relativeSourceFilePath)
+        {
             // create sourceFilePath
             var sourceFilePath = projectPath + relativeSourceFilePath;
 
@@ -121,15 +138,14 @@ namespace ResMerger
             // get res dict string
             var resDictString = sourceDoc.Root.Name.LocalName;
 
-            // create output doc
             var outputDoc = XDocument.Parse("<" + resDictString + " xmlns=\"" + defaultNameSpace + "\"/>");
 
             // create documents
             var documents = new Dictionary<string, Data>();
-          
+
             // add elements
             ResourceMerger.PrepareDocuments(ref documents, projectPath, projectName, relativeSourceFilePath);
-       
+
             // add elements (ordered by dependency count)
             foreach (var item in documents.OrderByDescending(item => item.Value.DependencyCount))
             {
@@ -141,16 +157,7 @@ namespace ResMerger
                 outputDoc.Root.Add(item.Value.Document.Root.Elements().Where(e => !e.Name.LocalName.StartsWith(resDictString)));
             }
 
-            using (var ms = new MemoryStream())
-            {
-                outputDoc.Save(ms);
-
-                if (OutputEqualsExistingFileContent(Path.Combine(projectPath, relativeOutputFilePath), ms.ToArray()))
-                    return;
-            }
-
-            // save file
-            outputDoc.Save(projectPath + relativeOutputFilePath);
+            return outputDoc;
         }
 
         private static bool OutputEqualsExistingFileContent(string targetFileName, IEnumerable<byte> newFileContent)

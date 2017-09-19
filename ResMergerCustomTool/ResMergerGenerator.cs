@@ -40,7 +40,7 @@ namespace ResMergerCustomTool
                 rgbOutputFileContents[0] = Marshal.AllocCoTaskMem(length);
                 Marshal.Copy(bytes, 0, rgbOutputFileContents[0], length);
                 pcbOutput = (uint)length;
-                return VSConstants.S_OK;
+                return 0;
             }
         }
 

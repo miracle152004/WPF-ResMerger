@@ -11,6 +11,7 @@ namespace ResMergerCustomTool
 {
     [Guid("86549FFF-7343-4AAB-847F-A0320B6718F2")]
     [CustomTool("ResMergerGenerator", "Merges the used resource dictionaries in one file")]
+    [ComVisible(true)]
     public class ResMergerGenerator : IVsSingleFileGenerator
     {
         internal static Guid CSharpCategoryGuid = new Guid("FAE04EC1-301F-11D3-BF4B-00C04F79EFBC");
@@ -46,7 +47,7 @@ namespace ResMergerCustomTool
 
         private string GetRelativeSourceFilePath(string projectPath, string wszInputFilePath)
         {
-            return wszInputFilePath.Replace(@"\", @"/") .Replace(projectPath, string.Empty);
+            return wszInputFilePath.Replace(projectPath, string.Empty).Replace(@"\", @"/");
         }
 
         private string GetProjectName(string projectPath)

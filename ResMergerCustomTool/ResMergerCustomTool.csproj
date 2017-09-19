@@ -20,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RegisterForComInterop>true</RegisterForComInterop>
+    <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -46,8 +46,6 @@
   <ItemGroup>
     <Compile Include="CustomToolAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProvideAssemblyObjectAttribute.cs" />
-    <Compile Include="ProvideGeneratorAttribute.cs" />
     <Compile Include="ResMergerGenerator.cs" />
   </ItemGroup>
   <ItemGroup>

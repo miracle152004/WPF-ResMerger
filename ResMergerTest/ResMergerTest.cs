@@ -35,8 +35,8 @@ namespace ResMergerTest
     [TestClass]
     public class ResMergerTest
     {
-        private string PROJECT_PATH = Environment.CurrentDirectory + @"/../../../../../ProjectTemplates/A.Showcase/A.Styling/";
-        private string PROJECT_NAME = "A.Styling";
+        private string PROJECT_PATH = Environment.CurrentDirectory + @"/../../../WPFApp1/";
+        private string PROJECT_NAME = "WPFTestApp";
         private string RELATIVE_SOURCE_PATH = "/LookAndFeel.xaml";
         private string RELATIVE_OUTPUT_PATH = "/FullLookAndFeel.xaml";
         private string WRONG = "wrong";

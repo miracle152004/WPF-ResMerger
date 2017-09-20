@@ -37,6 +37,15 @@ Another thing you might want to do is, to mark the output resource dictionary de
 
 ![picture alt](http://www.davidchristian.de/images/dep.png "FullLookAndFeel")
 
+Using the Custom Tool
+----------
+The Resmerger can also be used by installing the custom tool vsix as a Visual Studio 2017 Addin.
+This allows the user to use the "ResMergerGenerator" as a custom tool for the source xaml file (i.e. LookAndFeel.xaml).
+If the source file is saved or the custom tool is run manually the custom tool creates a file with the name {sourcefile}Full.xaml (i.e. LookAndFeelFull.xaml).
+This file is now visually linked to the source file and can be used to as resource dictionary in your application.
+
+![picture alt](https://s26.postimg.org/ixjtw0mwp/Res_Merge_Custom_Tool.png "Custom Tool")
+
 Feedback
 ----------
 So hopefully you like it and share your impressions with us! André Lanninger & David C. Thömmes

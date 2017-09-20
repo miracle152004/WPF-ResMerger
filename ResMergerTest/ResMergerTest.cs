@@ -85,17 +85,6 @@ namespace ResMergerTest
         }
 
         [TestMethod]
-        public void WrongProjectNameSet()
-        {
-            ExceptionAssert.Throws<Exception>(
-                () => Program.Main(new string[]
-                {
-                    PROJECT_PATH,
-                    PROJECT_NAME + WRONG,
-                }), ResourceMerger.FILE_EXCEPTION, true);
-        }
-
-        [TestMethod]
         public void WrongSourceFilePathSet()
         {
             ExceptionAssert.Throws<Exception>(

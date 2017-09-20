@@ -19,7 +19,7 @@ namespace ResMergerCustomTool
 
         public int DefaultExtension(out string pbstrDefaultExtension)
         {
-            pbstrDefaultExtension = ".xaml";
+            pbstrDefaultExtension = "Full.xaml";
             return pbstrDefaultExtension.Length;
         }
 
@@ -47,7 +47,7 @@ namespace ResMergerCustomTool
 
         private string GetRelativeSourceFilePath(string projectPath, string wszInputFilePath)
         {
-            return wszInputFilePath.Replace(projectPath, string.Empty).Replace(@"\", @"/");
+            return wszInputFilePath.Replace(projectPath, string.Empty).Replace(@"\", @"/").TrimStart('/');
         }
 
         private string GetProjectName(string projectPath)
@@ -65,14 +65,14 @@ namespace ResMergerCustomTool
             FileInfo[] fi = di.GetFiles("*.csproj");
             if (fi.Length > 0)
             {
-                return fi[0].DirectoryName;
+                return $@"{fi[0].DirectoryName}\";
             }
 
             di = di.Parent;
             fi = di.GetFiles("*.csproj");
             if (fi.Length > 0)
             {
-                return fi[0].DirectoryName;
+                return $@"{fi[0].DirectoryName}\";
             }
 
             return string.Empty;

@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:WpfApp1">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Brushes.xaml"/>
+        <ResourceDictionary Source="Brushes2.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

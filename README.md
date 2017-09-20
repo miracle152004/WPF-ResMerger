@@ -46,6 +46,9 @@ This file is now visually linked to the source file and can be used to as resour
 
 ![picture alt](https://s26.postimg.org/ixjtw0mwp/Res_Merge_Custom_Tool.png "Custom Tool")
 
+You can also use this fork of the "RunCustomToolOnBuild" Visual Studio Extension to also run the custom tool on the file when the assembly is build.
+[RunCustomToolOnBuild with xaml support](https://github.com/miracle152004/RunCustomToolOnBuild)
+
 Feedback
 ----------
 So hopefully you like it and share your impressions with us! André Lanninger & David C. Thömmes
